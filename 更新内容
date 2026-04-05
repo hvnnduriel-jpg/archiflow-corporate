@@ -1,0 +1,71 @@
+ ⎿  warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+     [main 5096107] 更新内容
+      1 file changed, 2 insertions(+)
+     To https://github.com/hvnnduriel-jpg/archiflow-corporate.git
+        22c261b..5096107  main -> main
+
+     Retrieving project…
+     Deploying hvnnduriel-jpgs-projects/archiflow-corporate
+     Inspect: https://vercel.com/hvnnduriel-jpgs-projects/archiflow-corporate/2MCeMhdCBb8tt3B6sdeZVChARRHd [1s]
+     Production: https://archiflow-corporate-igj96nf4h-hvnnduriel-jpgs-projects.vercel.app [1s]
+     Building...
+     Building...
+     Building: Running build in Washington, D.C., USA (East) – iad1
+     Building: Build machine configuration: 2 cores, 8 GB
+     Building: Retrieving list of deployment files...
+     Building: Downloading 22 deployment files...
+     Building: Restored build cache from previous deployment (AbM85nUSYKR9bpvAz7JvWmG811FX)
+     Building: Running "vercel build"
+     Building: Vercel CLI 50.38.2
+     Building: Installing dependencies...
+     Building: up to date in 1s
+     Building: 146 packages are looking for funding
+     Building: run `npm fund` for details
+     Building: Detected Next.js version: 16.2.2
+     Building: Running "npm run build"
+     Building: > archiflow-corporate@0.1.0 build
+     Building: > next build
+     Building: ▲ Next.js 16.2.2 (Turbopack)
+     Building: Creating an optimized production build ...
+     Building: ✓ Compiled successfully in 5.4s
+     Building: Running TypeScript ...
+     Building: Finished TypeScript in 3.1s ...
+     Building: Collecting page data using 1 worker ...
+     Building: Generating static pages using 1 worker (0/4) ...
+     Building: Generating static pages using 1 worker (1/4)
+     Building: Generating static pages using 1 worker (2/4)
+     Building: Generating static pages using 1 worker (3/4)
+     Building: ✓ Generating static pages using 1 worker (4/4) in 152ms
+     Building: Finalizing page optimization ...
+     Building: Running onBuildComplete from Vercel
+     Building: Route (app)
+     Building: ┌ ○ /
+     Building: └ ○ /_not-found
+     Building: ○  (Static)  prerendered as static content
+     Building: Build Completed in /vercel/output [12s]
+     Building: Deploying outputs...
+     Production: https://archiflow-corporate-igj96nf4h-hvnnduriel-jpgs-projects.vercel.app [44s]
+     Completing...
+     Aliased: https://archiflow-corporate.vercel.app [44s]
+     {
+       "status": "ok",
+       "deployment": {
+         "id": "dpl_2MCeMhdCBb8tt3B6sdeZVChARRHd",
+         "url": "https://archiflow-corporate-igj96nf4h-hvnnduriel-jpgs-projects.vercel.app",
+         "inspectorUrl": "https://vercel.com/hvnnduriel-jpgs-projects/archiflow-corporate/2MCeMhdCBb8tt3B6sdeZVChARRHd",
+         "readyState": "READY",
+         "target": "production",
+         "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_2MCeMhdCBb8tt3B6sdeZVChARRHd"
+       },
+       "message": "Deployment archiflow-corporate-igj96nf4h-hvnnduriel-jpgs-projects.vercel.app ready.",
+       "next": [
+         {
+           "command": "vercel inspect archiflow-corporate-igj96nf4h-hvnnduriel-jpgs-projects.vercel.app",
+           "when": "Inspect deployment"
+         },
+         {
+           "command": "vercel deploy --prod",
+           "when": "Promote to production"
+         }
+       ]
+     }
