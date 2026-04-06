@@ -68,19 +68,122 @@ export default function Home() {
               "radial-gradient(ellipse 70% 60% at 110% 10%, rgba(200,168,75,0.15) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at -10% 90%, rgba(200,168,75,0.08) 0%, transparent 60%)",
           }}
         />
-        {/* 回路ライン装飾 */}
+        {/* 回路基板アニメーションSVG */}
         <svg
           aria-hidden="true"
-          className="pointer-events-none absolute right-0 top-0 h-full w-1/2 opacity-10"
-          viewBox="0 0 400 600"
+          className="pointer-events-none absolute right-0 top-0 h-full w-1/2"
+          viewBox="0 0 500 700"
           fill="none"
           preserveAspectRatio="xMidYMid slice"
         >
-          <polyline points="300,0 300,80 180,80 180,160 340,160 340,260" stroke="#C8A84B" strokeWidth="1.2" />
-          <polyline points="380,100 260,100 260,200 380,200 380,320 220,320" stroke="#C8A84B" strokeWidth="0.8" opacity="0.7" />
-          <circle cx="300" cy="80" r="4" fill="#C8A84B" />
-          <circle cx="340" cy="260" r="4" fill="#C8A84B" />
-          <circle cx="220" cy="320" r="3" fill="#C8A84B" opacity="0.7" />
+          <style>{`
+            @keyframes af-trace-a {
+              0%   { stroke-dashoffset: 600; opacity: 0; }
+              8%   { opacity: 0.9; }
+              65%  { stroke-dashoffset: 0; opacity: 0.9; }
+              85%  { stroke-dashoffset: 0; opacity: 0.35; }
+              100% { stroke-dashoffset: 600; opacity: 0; }
+            }
+            @keyframes af-trace-b {
+              0%   { stroke-dashoffset: 570; opacity: 0; }
+              8%   { opacity: 0.8; }
+              65%  { stroke-dashoffset: 0; opacity: 0.8; }
+              85%  { stroke-dashoffset: 0; opacity: 0.3; }
+              100% { stroke-dashoffset: 570; opacity: 0; }
+            }
+            @keyframes af-trace-c {
+              0%   { stroke-dashoffset: 430; opacity: 0; }
+              8%   { opacity: 0.7; }
+              65%  { stroke-dashoffset: 0; opacity: 0.7; }
+              85%  { stroke-dashoffset: 0; opacity: 0.25; }
+              100% { stroke-dashoffset: 430; opacity: 0; }
+            }
+            @keyframes af-flow {
+              from { stroke-dashoffset: 40; }
+              to   { stroke-dashoffset: 0; }
+            }
+            @keyframes af-pulse {
+              0%, 100% { opacity: 0.3; }
+              50%       { opacity: 1; }
+            }
+            .af-tr-a { stroke-dasharray: 600; animation: af-trace-a 7s ease-in-out infinite; }
+            .af-tr-b { stroke-dasharray: 570; animation: af-trace-b 8s ease-in-out infinite 2.5s; }
+            .af-tr-c { stroke-dasharray: 430; animation: af-trace-c 6s ease-in-out infinite 1.2s; }
+            .af-fl-g { stroke-dasharray: 15 28; animation: af-flow 1s linear infinite; }
+            .af-fl-w { stroke-dasharray: 12 22; animation: af-flow 1.4s linear infinite; }
+            .af-nd   { animation: af-pulse 2.5s ease-in-out infinite; }
+          `}</style>
+
+          {/* ─── 静的ベーストレース（低透明度の背景） ─── */}
+          <polyline points="420,0 420,80 340,80 340,40 260,40 260,140 380,140 380,240" stroke="#FFD700" strokeWidth="0.8" opacity="0.12" />
+          <polyline points="500,160 440,160 440,240 490,240 490,360 390,360 390,300 290,300" stroke="#FFD700" strokeWidth="0.8" opacity="0.12" />
+          <polyline points="460,90 460,180 360,180 360,290 490,290" stroke="white" strokeWidth="0.8" opacity="0.08" />
+          <polyline points="290,210 290,280 430,280 430,380 330,380 330,460 470,460" stroke="#FFD700" strokeWidth="0.7" opacity="0.10" />
+          <polyline points="490,490 430,490 430,560 350,560 350,500 250,500" stroke="white" strokeWidth="0.7" opacity="0.08" />
+
+          {/* ─── ICチップ風ボックス ─── */}
+          <rect x="240" y="118" width="42" height="28" rx="4" stroke="#FFD700" strokeWidth="1" opacity="0.2" />
+          <line x1="249" y1="118" x2="249" y2="110" stroke="#FFD700" strokeWidth="1" opacity="0.2" />
+          <line x1="263" y1="118" x2="263" y2="110" stroke="#FFD700" strokeWidth="1" opacity="0.2" />
+          <line x1="249" y1="146" x2="249" y2="154" stroke="#FFD700" strokeWidth="1" opacity="0.2" />
+          <line x1="263" y1="146" x2="263" y2="154" stroke="#FFD700" strokeWidth="1" opacity="0.2" />
+          <rect x="362" y="218" width="42" height="28" rx="4" stroke="#FFD700" strokeWidth="1" opacity="0.2" />
+          <line x1="371" y1="218" x2="371" y2="210" stroke="#FFD700" strokeWidth="1" opacity="0.2" />
+          <line x1="385" y1="218" x2="385" y2="210" stroke="#FFD700" strokeWidth="1" opacity="0.2" />
+          <line x1="371" y1="246" x2="371" y2="254" stroke="#FFD700" strokeWidth="1" opacity="0.2" />
+          <line x1="385" y1="246" x2="385" y2="254" stroke="#FFD700" strokeWidth="1" opacity="0.2" />
+          <rect x="411" y="348" width="42" height="28" rx="4" stroke="white" strokeWidth="0.8" opacity="0.15" />
+
+          {/* ─── アニメーションA（ゴールド・メイン） ─── */}
+          <polyline
+            className="af-tr-a"
+            points="420,0 420,80 340,80 340,40 260,40 260,140 380,140 380,240"
+            stroke="#FFD700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          />
+
+          {/* ─── アニメーションB（ゴールド・サブ） ─── */}
+          <polyline
+            className="af-tr-b"
+            points="500,160 440,160 440,240 490,240 490,360 390,360 390,300 290,300"
+            stroke="#FFD700" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
+          />
+
+          {/* ─── アニメーションC（白） ─── */}
+          <polyline
+            className="af-tr-c"
+            points="460,90 460,180 360,180 360,290 490,290"
+            stroke="white" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"
+          />
+
+          {/* ─── 流れるダッシュ（ゴールド） ─── */}
+          <polyline
+            className="af-fl-g"
+            points="290,210 290,280 430,280 430,380 330,380 330,460 470,460"
+            stroke="#FFD700" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5"
+          />
+
+          {/* ─── 流れるダッシュ（白） ─── */}
+          <polyline
+            className="af-fl-w"
+            points="490,490 430,490 430,560 350,560 350,500 250,500"
+            stroke="white" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"
+          />
+
+          {/* ─── ノードドット ─── */}
+          <circle className="af-nd" cx="420" cy="80" r="4" fill="#FFD700" style={{ animationDelay: "0s" }} />
+          <circle className="af-nd" cx="340" cy="80" r="3.5" fill="#FFD700" style={{ animationDelay: "0.5s" }} />
+          <circle className="af-nd" cx="260" cy="40" r="3" fill="#FFD700" style={{ animationDelay: "1.2s" }} />
+          <circle className="af-nd" cx="260" cy="140" r="4" fill="#FFD700" style={{ animationDelay: "0.3s" }} />
+          <circle className="af-nd" cx="380" cy="140" r="3.5" fill="#FFD700" style={{ animationDelay: "1.8s" }} />
+          <circle className="af-nd" cx="380" cy="240" r="4" fill="#FFD700" style={{ animationDelay: "0.8s" }} />
+          <circle className="af-nd" cx="440" cy="240" r="3.5" fill="#FFD700" style={{ animationDelay: "2.2s" }} />
+          <circle className="af-nd" cx="490" cy="360" r="4" fill="#FFD700" style={{ animationDelay: "1.5s" }} />
+          <circle className="af-nd" cx="390" cy="300" r="3.5" fill="#FFD700" style={{ animationDelay: "0.7s" }} />
+          <circle className="af-nd" cx="460" cy="180" r="3.5" fill="white" style={{ animationDelay: "1.0s" }} />
+          <circle className="af-nd" cx="360" cy="180" r="3" fill="white" style={{ animationDelay: "2.5s" }} />
+          <circle className="af-nd" cx="360" cy="290" r="3.5" fill="white" style={{ animationDelay: "0.4s" }} />
+          <circle className="af-nd" cx="430" cy="380" r="3.5" fill="#FFD700" style={{ animationDelay: "1.7s" }} />
+          <circle className="af-nd" cx="330" cy="460" r="3" fill="#FFD700" style={{ animationDelay: "0.9s" }} />
         </svg>
 
         <div className="relative mx-auto max-w-7xl px-4 py-28 sm:px-6 sm:py-36 lg:px-8">

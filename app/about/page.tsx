@@ -29,8 +29,8 @@ const VALUES = [
 /* ── 会社情報テーブル ── */
 const COMPANY_INFO = [
   { label: "社名", value: "ArchiFlow AI" },
-  { label: "設立", value: "2024年" },
-  { label: "代表", value: "敬脩（Keisuke）" },
+  { label: "設立", value: "2026年" },
+  { label: "代表", value: "本間敬脩" },
   { label: "事業内容", value: "AI導入支援・業務自動化・コンテンツ生成システム開発" },
   { label: "対象領域", value: "教育機関・中小企業・スタートアップ" },
   { label: "主要ツール", value: "Make, Notion, Claude, J-Quants API, kabustation API" },
